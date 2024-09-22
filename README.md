@@ -1,18 +1,21 @@
 # Home_sensor_data_analysis
-Outline
+# Outline
+
 The home sensor system monitor and records data from a variety of sensors in a residential setting.
 Physical Hardware
 The system is composed of a number of sensors wired to and powered by a central ATMega 2560 microcontroller (sensor hub). The microcontroller is connected via 3 TTL serial lines to a host server (server).
  The sensor hub supplies 5 volts to all sensors. The server and sensor hub are on a battery backup power supply which can power the systems for 2-4 hours in the event of a power failure.
-Data format
+ 
+# Data format
 Data is transmitted from the sensor hub to the server via TTL serial data. Each serial interface provides a connection for different services.
-● Serial 0 - Interface to program the sensor hub with new firmware
-● Serial 1 - System interface - all data sent to the server on this interface is logged. All
-data is sent via JSON.
-● Serial 2 - User interface - this interface allows data to be sent / received manually over a
-console. Usually used for debugging. Data is sent as plain text.
+
+* Serial 0 - Interface to program the sensor hub with new firmware
+* Serial 1 - System interface - all data sent to the server on this interface is logged. All data is sent via JSON.
+* Serial 2 - User interface - this interface allows data to be sent / received manually over a console. Usually used for debugging. Data is sent as plain text.
+* 
 Data on serial 1 is sent via json strings. Incoming JSON strings are checked for validity and logged to a file. Each file grows to a maximum of 4 MB before a new file is created.
 There are three message types possible.
+
 name
 notes
 typical occurrence
